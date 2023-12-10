@@ -17,6 +17,7 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
+    classes = {}
 
     def __init__(self):
         from models.base_model import BaseModel
