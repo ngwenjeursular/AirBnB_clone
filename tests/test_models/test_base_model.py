@@ -7,6 +7,7 @@ import json
 import uuid
 import os
 
+
 class TestBaseModel(unittest.TestCase):
     def setUp(self):
         """Set up any necessary test fixtures."""
@@ -81,6 +82,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(new_model.name, my_model.name)
         self.assertEqual(new_model.my_number, my_model.my_number)
         self.assertNotEqual(new_model.updated_at, my_model.updated_at)
+
 
 if __name__ == '__main__':
     unittest.main()
