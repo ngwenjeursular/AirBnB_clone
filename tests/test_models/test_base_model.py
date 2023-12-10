@@ -46,5 +46,41 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn('__class__', obj_dict)
         self.assertEqual(obj_dict['__class__'], 'BaseModel')
 
+    def test_to_dict(self):
+        """Test to_dict method"""
+        my_model = BaseModel()
+        my_model.name = "My_First_Model"
+        my_model.my_number = 89
+
+        my_model_dict = my_model.to_dict()
+
+        self.assertIsInstance(my_model_dict, dict)
+        self.assertIn('id', my_model_dict)
+        self.assertIn('created_at', my_model_dict)
+        self.assertIn('__class__', my_model_dict)
+        self.assertIn('name', my_model_dict)
+        self.assertIn('my_number', my_model_dict)
+        if hasattr(my_model, 'updated_at'):
+            self.assertIn('updated_at', my_model_dict)
+        else:
+            self.assertNotIn('updated_at', my_model_dict)
+
+    def test_from_dict(self):
+        """Test creation of instance from dictionary"""
+        my_model = BaseModel()
+        my_model.name = "My_First_Model"
+        my_model.my_number = 89
+
+        my_model_dict = my_model.to_dict()
+
+        new_model = BaseModel(**my_model_dict)
+
+        self.assertIsInstance(new_model, BaseModel)
+        self.assertNotEqual(new_model.id, my_model.id)
+        self.assertNotEqual(new_model.created_at, my_model.created_at)
+        self.assertEqual(new_model.name, my_model.name)
+        self.assertEqual(new_model.my_number, my_model.my_number)
+        self.assertNotEqual(new_model.updated_at, my_model.updated_at)
+
 if __name__ == '__main__':
     unittest.main()
