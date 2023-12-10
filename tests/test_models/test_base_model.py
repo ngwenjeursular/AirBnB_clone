@@ -3,6 +3,7 @@
 import unittest
 from datetime import datetime
 from models.base_model import BaseModel
+from models.user import User
 import json
 import uuid
 import os

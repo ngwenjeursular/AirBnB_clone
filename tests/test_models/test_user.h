@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """test module for class user"""
 import unittest
+from models.base_model import BaseModel
 from models.user import User
 
 
@@ -30,7 +31,7 @@ class TestUser(unittest.TestCase):
         self.assertIn("id", user_dict)
         self.assertIn("created_at", user_dict)
         self.assertIn("updated_at", user_dict)
-        self.assertEqual(user_dict["email"], "")
+        self.assertEqual(user_dict["email"], "test@example.com")
         self.assertEqual(user_dict["password"], "")
         self.assertEqual(user_dict["first_name"], "")
         self.assertEqual(user_dict["last_name"], "")
