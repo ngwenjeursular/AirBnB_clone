@@ -8,12 +8,26 @@ import json
 import os
 import models
 from models.base_model import BaseModel
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 # from models.user import User
 
 
 class FileStorage:
     """Serializes instances to a JSON file
     and deserializes JSON file to instances:"""
+
+    CLASSES = {
+        'BaseModel': BaseModel,
+        'State': State,
+        'City': City,
+        'Amenity': Amenity,
+        'Place': Place,
+        'Review': Review
+    }
 
     __file_path = "file.json"
     __objects = {}

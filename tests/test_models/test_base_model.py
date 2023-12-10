@@ -9,6 +9,7 @@ import os
 
 
 class TestBaseModel(unittest.TestCase):
+    """test class for the base model"""
     def setUp(self):
         """Set up any necessary test fixtures."""
         self.base_model = BaseModel()
